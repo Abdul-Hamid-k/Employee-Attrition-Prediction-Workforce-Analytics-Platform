@@ -1,0 +1,112 @@
+# ============================
+# Environment & Secrets
+# ============================
+.env
+.env.local
+.env.*.local
+*.pem
+secrets.json
+
+# ============================
+# Python / ML
+# ============================
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+.Python
+build/
+dist/
+*.egg
+
+# Virtual environments
+venv/
+.venv/
+env/
+ENV/
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# ML artifacts (large/binary — don't commit trained models or raw data)
+ml/saved_models/
+*.pkl
+*.joblib
+*.h5
+*.pt
+*.pth
+mlruns/
+mlflow.db
+
+# Data files (keep raw/processed data out of git; add a data/README.md instead)
+data/raw/
+data/processed/
+*.csv
+*.xlsx
+!reports/sample_output.xlsx
+
+# ============================
+# Node / React (frontend)
+# ============================
+frontend/node_modules/
+node_modules/
+frontend/build/
+frontend/dist/
+.npm/
+.eslintcache
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# ============================
+# Backend (FastAPI/Flask)
+# ============================
+backend/__pycache__/
+*.log
+*.sqlite3
+
+# ============================
+# Docker
+# ============================
+*.pid
+docker-compose.override.yml
+
+# ============================
+# Power BI
+# ============================
+*.pbix.bak
+~$*.pbix
+
+# ============================
+# IDE / Editor
+# ============================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# ============================
+# OS files
+# ============================
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ============================
+# Testing / Coverage
+# ============================
+.pytest_cache/
+htmlcov/
+.coverage
+coverage/
+
+# ============================
+# Misc
+# ============================
+*.bak
+*.tmp
+.cache/
