@@ -223,7 +223,7 @@ def main():
     parser.add_argument("--skip-shap", action="store_true")
     args = parser.parse_args()
 
-    os.makedirs(args.output, exist_ok=True)
+    # os.makedirs(args.output, exist_ok=True)
 
     model, X_test, y_test = load_artifacts(args.model, args.test_x, args.test_y)
 
