@@ -5,6 +5,7 @@ import seaborn as sns
 
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
+import pickle
 
 from pathlib import Path
 import sys
@@ -12,6 +13,8 @@ import sys
 sys.path.append('..')
 
 from src.config import DATA_RAW
+
+
 
 
 
@@ -55,6 +58,9 @@ def load_processed_data():
   y_val = le.transform(y_val)
 
   print("Label Encoding applied to categorical features in X and target variable y.")
+
+  pickle.dump(le, open('label_encoder.pkl', 'wb'))
+
 
   return X_train, X_test, X_val, y_train, y_test, y_val
 
