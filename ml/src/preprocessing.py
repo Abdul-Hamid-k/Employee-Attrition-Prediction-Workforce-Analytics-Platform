@@ -59,7 +59,7 @@ def load_processed_data():
 
   print("Label Encoding applied to categorical features in X and target variable y.")
 
-  # pickle.dump(le, open('label_encoder.pkl', 'wb'))
+  pickle.dump(le, open('../models/label_encoder.pkl', 'wb'))
 
   # export processed data
   X_train.to_csv(f"{DATA_PROCESSED}/X_train.csv", index=False)

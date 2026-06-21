@@ -47,7 +47,7 @@ def attrition_classification_model():
   # X_train.columns
 
 
-  pickle.dump(gbc, open('attrition_classification_model.pkl', 'wb'))
+  pickle.dump(gbc, open('../models/attrition_classification_model.pkl', 'wb'))
 
 
   return gbc
