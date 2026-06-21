@@ -12,7 +12,7 @@ import sys
 
 sys.path.append('..')
 
-from src.config import DATA_RAW
+from src.config import DATA_RAW, DATA_PROCESSED
 
 
 
@@ -59,8 +59,18 @@ def load_processed_data():
 
   print("Label Encoding applied to categorical features in X and target variable y.")
 
-  pickle.dump(le, open('label_encoder.pkl', 'wb'))
+  # pickle.dump(le, open('label_encoder.pkl', 'wb'))
+
+  # export processed data
+  X_train.to_csv(f"{DATA_PROCESSED}/X_train.csv", index=False)
+  X_test.to_csv(f"{DATA_PROCESSED}/X_test.csv", index=False)
+  X_val.to_csv(f"{DATA_PROCESSED}/X_val.csv", index=False)
+
+  pd.DataFrame(y_train).to_csv(f"{DATA_PROCESSED}/y_train.csv", index=False)
+  pd.DataFrame(y_test).to_csv(f"{DATA_PROCESSED}/y_test.csv", index=False)
+  pd.DataFrame(y_val).to_csv(f"{DATA_PROCESSED}/y_val.csv", index=False)
 
 
   return X_train, X_test, X_val, y_train, y_test, y_val
 
+load_processed_data()
