@@ -14,6 +14,14 @@ import pandas as pd
 
 def predict_attrition(test_data):
   model = joblib.load(f"{ROOT}/ml/models/attrition_classification_model.pkl")
+
+
+  cat_cols = ['BusinessTravel', 'Department', 'EducationField', 'JobRole', 'MaritalStatus', 'Over18', 'OverTime']
+
+  for col in cat_cols:
+    label_encoder = joblib.load(f"{ROOT}/ml/models/{col}_encoder.pkl")
+    test_data[col] = label_encoder.transform(test_data[col])
+
   pred = model.predict(test_data)
 
   return pred
@@ -22,18 +30,15 @@ import pandas as pd
 
 columns = [
     'Age', 'BusinessTravel', 'DailyRate', 'Department', 'DistanceFromHome',
-    'EducationField', 'EmployeeCount', 'EmployeeNumber',
-    'EnvironmentSatisfaction', 'HourlyRate', 'JobInvolvement', 'JobLevel',
+    'EducationField', 'EmployeeCount', 'EmployeeNumber',   'EnvironmentSatisfaction', 'HourlyRate', 'JobInvolvement', 'JobLevel',
     'JobRole', 'JobSatisfaction', 'MaritalStatus', 'MonthlyIncome',
-    'MonthlyRate', 'NumCompaniesWorked', 'Over18', 'OverTime',
-    'PercentSalaryHike', 'PerformanceRating', 'RelationshipSatisfaction',
+    'MonthlyRate', 'NumCompaniesWorked', 'Over18', 'OverTime', 'PercentSalaryHike', 'PerformanceRating', 'RelationshipSatisfaction',
     'StandardHours', 'StockOptionLevel', 'TotalWorkingYears',
     'TrainingTimesLastYear', 'WorkLifeBalance', 'YearsAtCompany'
 ]
 
 values = [
-    25, 1, 480, 1, 23, 1, 1, 260, 2, 50, 2, 1, 4, 3, 1,
-    6000, 18000, 2, 1, 1, 5, 2, 1, 80, 0, 4, 2, 3, 2
+    25, 'Travel_Rarely', 480, 'Sales', 23, 'Other', 1000, 260, 2, 50, 2, 1, 'Sales Executive', 3, 'Single', 6000, 18000, 2, 'Y', 'Yes', 5, 2, 1, 80, 0, 4, 2, 3, 2
 ]
 
 # Create a single-row DataFrame
