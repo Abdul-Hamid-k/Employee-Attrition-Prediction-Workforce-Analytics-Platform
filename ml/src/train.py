@@ -3,19 +3,19 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.tree import DecisionTreeClassifier
+# from sklearn.ensemble import RandomForestClassifier
+# from sklearn.tree import DecisionTreeClassifier
 from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
 
-import xgboost as xgb
+# import xgboost as xgb
 from sklearn.ensemble import GradientBoostingClassifier
-from catboost import CatBoostClassifier
+# from catboost import CatBoostClassifier
 
-from sklearn.model_selection import GridSearchCV
-from sklearn.model_selection import RandomizedSearchCV
-from scipy.stats import uniform, randint
+# from sklearn.model_selection import GridSearchCV
+# from sklearn.model_selection import RandomizedSearchCV
+# from scipy.stats import uniform, randint
 
-import pickle
+import joblib
 
 
 from pathlib import Path
@@ -47,7 +47,7 @@ def attrition_classification_model():
   # X_train.columns
 
 
-  pickle.dump(gbc, open('../models/attrition_classification_model.pkl', 'wb'))
+  joblib.dump(gbc, open('../models/attrition_classification_model.pkl', 'wb'))
 
 
   return gbc
