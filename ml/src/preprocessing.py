@@ -5,7 +5,7 @@ import seaborn as sns
 
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
-import pickle
+import joblib
 
 from pathlib import Path
 import sys
@@ -44,13 +44,19 @@ def load_processed_data():
   # Label encoding
 
   # Initialize LabelEncoder
-  le = LabelEncoder()
+
+  encoders = {}
 
   # Apply Label Encoding to categorical features in X_train, X_test, X_val
   for col in X_train.select_dtypes(include='object').columns:
+      le = LabelEncoder()
       X_train[col] = le.fit_transform(X_train[col])
       X_test[col] = le.transform(X_test[col])
       X_val[col] = le.transform(X_val[col])
+
+      encoders[col] = le
+
+      joblib.dump(le, f"../models/{col}_encoder.pkl")
 
   # Apply Label Encoding to the target variable y_train, y_test, y_val
   y_train = le.fit_transform(y_train)
@@ -59,7 +65,7 @@ def load_processed_data():
 
   print("Label Encoding applied to categorical features in X and target variable y.")
 
-  pickle.dump(le, open('../models/label_encoder.pkl', 'wb'))
+  # joblib.dump(le, open('../models/label_encoder.pkl', 'wb'))
 
   # export processed data
   X_train.to_csv(f"{DATA_PROCESSED}/X_train.csv", index=False)
