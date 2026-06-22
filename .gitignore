@@ -40,13 +40,6 @@ ml/saved_models/
 mlruns/
 mlflow.db
 
-# Data files (keep raw/processed data out of git; add a data/README.md instead)
-data/raw/
-data/processed/
-*.csv
-*.xlsx
-!reports/sample_output.xlsx
-
 # ============================
 # Node / React (frontend)
 # ============================
